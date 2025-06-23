@@ -5,6 +5,8 @@ import lombok.*;
 @Data
 @ToString
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class LabReportRequest {
 
     private String patientName;
@@ -18,20 +20,8 @@ public class LabReportRequest {
     private String collectedOn;
     private String receivedOn;
     private String reportedOn;
+    private String patientPhone;
+    private boolean sendWhatsApp;
     private ReportDetail details;
 
-    public LabReportRequest(String patientName, int age, String gender, String refBy, long regOn, long uhid, String investigation, String registeredOn, String collectedOn, String receivedOn, String reportedOn, ReportDetail details) {
-        this.patientName = patientName;
-        this.age = age;
-        this.gender = gender;
-        this.refBy = refBy;
-        this.regOn = regOn;
-        this.uhid = uhid;
-        this.investigation = investigation;
-        this.registeredOn = registeredOn;
-        this.collectedOn = collectedOn;
-        this.receivedOn = receivedOn;
-        this.reportedOn = reportedOn;
-        this.details = details;
-    }
 }
