@@ -1,7 +1,7 @@
 app:
   # Public URL for your application (e.g., from ngrok for testing)
   # Example: https://your-domain.com
-  public-url: "https://84a0-202-72-225-9.ngrok-free.app" # <-- This will be set via command-line for the client
+  public-url: "https://a2ec-202-72-225-15.ngrok-free.app" # <-- This will be set via command-line for the client
 
 application:
   userdata:
@@ -65,3 +65,23 @@ footer:
 server:
   port: 8080
   address: localhost
+
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: rkorbo@gmail.com # <-- Replace with your Gmail address
+    password: bbxn edzl qfvq cnzs    # <-- Replace with your Gmail app password
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+    protocol: smtp
+    default-encoding: UTF-8
+
+lab:
+  technician:
+    email: rkorbo@gmail.com # <-- Should match your Gmail address
