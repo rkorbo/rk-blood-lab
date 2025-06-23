@@ -39,9 +39,9 @@ whatsapp:
   
   # Twilio API Configuration (only used when provider is "twilio")
   twilio:
-    account-sid: ${TWILIO_ACCOUNT_SID:ACa5bbf12fadfa0105f7521212bec2eff3}
-    auth-token: ${TWILIO_AUTH_TOKEN:c6b6c0e35d687c296ff4c84760579add}
-    from-number: ${TWILIO_WHATSAPP_NUMBER:whatsapp:+13213465458} # Twilio sandbox number
+    account-sid: ${TWILIO_ACCOUNT_SID:ACa54a3ea648e507c27aed69f03e6b2a30}
+    auth-token: ${TWILIO_AUTH_TOKEN:a05995bdfa035a00889f9c2cde76ea15}
+    from-number: ${TWILIO_WHATSAPP_NUMBER:whatsapp:+14155238886} # Twilio sandbox number
     sandbox-mode: ${TWILIO_SANDBOX_MODE:false} # Set to false for production
 
 range:
