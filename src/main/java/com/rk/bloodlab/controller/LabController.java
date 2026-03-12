@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -60,7 +61,7 @@ public class LabController {
             System.out.println("=== END DEBUG ===");
             
             // Process the report
-        labUser.processReport(request);
+            Path reportPath = labUser.processReport(request);
             
             // Build success message
             StringBuilder message = new StringBuilder("Report generated successfully! PDF file has been created.");
@@ -82,7 +83,8 @@ public class LabController {
             
             response.put("message", message.toString());
             response.put("patientName", request.getPatientName());
-            response.put("reportFileName", request.getPatientName() + "_CreatedPdfNew.pdf");
+            response.put("reportFileName", reportPath.getFileName().toString());
+            response.put("reportPath", reportPath.toAbsolutePath().toString());
             response.put("status", "success");
             
             return new ResponseEntity<>(response, HttpStatus.OK);

@@ -3,6 +3,17 @@ app:
   # Example: https://your-domain.com
   public-url: "https://a2ec-202-72-225-15.ngrok-free.app" # <-- This will be set via command-line for the client
 
+# Report generation configuration
+# - report.template.path: path to a fillable PDF template (AcroForm)
+# - report.output.root: optional absolute folder to store reports (if empty, defaults to ~/Documents/RK-Blood-Lab/Reports)
+report:
+  template:
+    # Use `classpath:/...` if you store the template in `src/main/resources/`
+    # Example: "classpath:/data/lab_editable_final.pdf"
+    path: "classpath:/data/client-template.pdf"
+  output:
+    root: ""
+
 application:
   userdata:
     user: admin

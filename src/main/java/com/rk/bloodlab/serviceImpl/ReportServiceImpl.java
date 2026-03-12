@@ -12,8 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 import java.io.IOException;
 import java.util.logging.Logger;
-import java.util.logging.Level;
-import java.io.File;
+import java.nio.file.Path;
 
 
 @Service
@@ -48,13 +47,11 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public void processReport(LabReportRequest request) throws DocumentException, IOException {
-        // Generate the PDF report
-        String reportFileName = request.getPatientName() + "_CreatedPdfNew.pdf";
-        pdfUtil.createBloodReport(request);
-        
-        // Get the full path to the generated PDF file
-        String pdfFilePath = getPdfFilePath(reportFileName);
+    public Path processReport(LabReportRequest request) throws DocumentException, IOException {
+        // Generate the PDF report into Documents\RK-Blood-Lab\Reports\<Patient_Name>\
+        Path outputPath = pdfUtil.createBloodReport(request);
+        String reportFileName = outputPath.getFileName().toString();
+        String pdfFilePath = outputPath.toAbsolutePath().toString();
         
         logger.info("PDF report generated: " + reportFileName);
         logger.info("PDF file path: " + pdfFilePath);
@@ -73,23 +70,7 @@ public class ReportServiceImpl implements ReportService {
         } else {
             logger.warning("Failed to email report to lab technician: " + technicianEmail);
         }
-    }
-    
-    /**
-     * Get the full path to the generated PDF file
-     * @param reportFileName Name of the report file
-     * @return Full path to the PDF file
-     */
-    private String getPdfFilePath(String reportFileName) {
-        // Get the current working directory
-        String currentDir = System.getProperty("user.dir");
-        
-        // Construct the full path to the PDF file
-        String pdfFilePath = currentDir + File.separator + reportFileName;
-        
-        logger.info("Current directory: " + currentDir);
-        logger.info("Constructed PDF path: " + pdfFilePath);
-        
-        return pdfFilePath;
+
+        return outputPath;
     }
 }
